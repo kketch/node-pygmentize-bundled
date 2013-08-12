@@ -88,9 +88,21 @@ var spawn           = require('child_process').spawn
 
       var execArgs = [
               '-f', options.format || defaultFormat
-            , '-l', options.lang || defaultLang
+            //, '-l', options.lang || defaultLang
             , '-P', 'encoding=' + (options.encoding || defaultEncoding)
           ]
+          
+      if (options.lang) {
+        
+        execArgs.push('-l', options.lang)
+        
+      }
+      
+      if (options.guess) {
+        
+        execArgs.push('-g')
+        
+      }
 
       if (options.options) {
         for (var option in options.options) {
